@@ -1,4 +1,3 @@
-readme: |
   # 🧠 Proyecto de Machine Learning  
   > Pipeline de modelado supervisado con enfoque en clasificación
 
@@ -19,27 +18,34 @@ readme: |
 
   ---
 
+ 
   ## 📂 Estructura del Proyecto
+  
+   
+  
+  ```
+  PROYECTO_MACHINE_LEARNING/              # Raíz del proyecto
+  │
+  ├── steps_pipeline/                     # Flujo principal del pipeline
+  │   └── src/                            # Código y notebooks del pipeline
+  │       ├── carga_datos.ipynb           # Carga inicial de datos y limpieza básica
+  │       ├── compresion_eda.ipynb        # Análisis exploratorio (EDA)
+  │       ├── ft_engineering.py           # Feature engineering (scaling, encoding, selección)
+  │       ├── heuristic_model.py          # Modelo base sencillo (baseline)
+  │       ├── model_training.ipynb        # Entrenamiento de modelos
+  │       ├── model_deploy.ipynb          # Ejemplo de despliegue (API/serving)
+  │       ├── model_evaluation.ipynb      # Evaluación de métricas
+  │       └── model_monitoring.ipynb      # Monitoreo y detección de drift
+  │
+  ├── config.json                         # Configuración global del pipeline
+  ├── base_de_datos.csv                   # Dataset original de ejemplo
+  ├── requirements.txt                    # Dependencias del proyecto
+  ├── .gitignore                          # Archivos/carpetas a ignorar por Git
+  ├── README.md                           # Documentación principal del proyecto
+  └── set_up.bat                          # Script para preparar el entorno en Windows
+  ```
 
-PROYECTO_MACHINE_LEARNING/
-│
-├── steps_pipeline/
-│ └── src/
-│ ├── carga_datos.ipynb
-│ ├── compresion_eda.ipynb
-│ ├── ft_engineering.py
-│ ├── heuristic_model.py
-│ ├── model_training.ipynb
-│ ├── model_deploy.ipynb
-│ ├── model_evaluation.ipynb
-│ └── model_monitoring.ipynb
-│
-├── config.json
-├── base_de_datos.csv
-├── requirements.txt
-├── .gitignore
-├── README.md
-└── set_up.bat
+
 ---
 
 ## ✅ Funcionalidades Principales
@@ -102,111 +108,121 @@ Este archivo controla los parámetros principales del pipeline:
     "reports_path": "reports/"
   }
 }
-⚙ Instalación del entorno
-✅ Automático (Windows)
+
+```
+
+## ⚙ Instalación del entorno
+
+### ✅ Opción automática (Windows)
 Ejecutar:
-
-Copiar código
+```bash
 set_up.bat
-✅ Manual
-bash
-Copiar código
+```
+
+### ✅ Opción manual
+```bash
+# Crear entorno virtual
 python -m venv venv
-source venv/bin/activate   # Linux/Mac
-venv\Scripts\activate      # Windows
 
+# Activar entorno
+# Linux/Mac
+source venv/bin/activate
+# Windows
+venv\Scripts\activate
+
+# Instalar dependencias
 pip install -r requirements.txt
-📦 Dependencias
-Las principales librerías utilizadas se encuentran en requirements.txt, incluyendo:
+```
 
-numpy
+---
 
-pandas
+## 📦 Dependencias Principales
 
-seaborn
+Las principales librerías se encuentran en `requirements.txt`:
 
-matplotlib
+- numpy
+- pandas
+- seaborn
+- matplotlib
+- scikit-learn
+- xgboost
+- lightgbm
+- imbalanced-learn
+- statsmodels
+- joblib
+- jupyter
 
-scikit-learn
+---
 
-xgboost
+## 🚀 Ejecución del Pipeline
 
-lightgbm
+1️⃣ **Carga / limpieza de datos**  
+📄 `steps_pipeline/src/carga_datos.ipynb`
 
-imbalanced-learn
+2️⃣ **EDA completo**  
+📄 `steps_pipeline/src/compresion_eda.ipynb`
 
-statsmodels
+3️⃣ **Entrenamiento del modelo**  
+📄 `steps_pipeline/src/model_training.ipynb`
 
-joblib
+4️⃣ **Evaluación del modelo**  
+📄 `steps_pipeline/src/model_evaluation.ipynb`
 
-jupyter
+5️⃣ **Exportar modelo entrenado**  
+📄 `modelo_rf.pkl`
 
-🚀 Ejecución del Pipeline
-🔹 1) Cargar / limpiar datos
-steps_pipeline/src/carga_datos.ipynb
+---
 
-🔹 2) EDA completo
-steps_pipeline/src/compresion_eda.ipynb
+## 📊 Métricas disponibles
 
-🔹 3) Entrenamiento
-steps_pipeline/src/model_training.ipynb
+- Accuracy
+- Precision
+- Recall
+- F1-Score
+- ROC-AUC
 
-🔹 4) Evaluación
-steps_pipeline/src/model_evaluation.ipynb
+---
 
-🔹 5) Exportar modelo
-Guarda:
-modelo_rf.pkl
+## 🧩 Feature Engineering
 
-📊 Métricas
-Accuracy
+📄 `steps_pipeline/src/ft_engineering.py`  
+Incluye funciones para:
+- Scaling
+- Encoding
+- Selección de variables
 
-Precision
+---
 
-Recall
+## 🌐 Despliegue y Monitoreo
 
-F1-Score
+- Despliegue del modelo  
+📄 `steps_pipeline/src/model_deploy.ipynb`
 
-ROC-AUC
+- Monitoreo de performance / drift  
+📄 `steps_pipeline/src/model_monitoring.ipynb`
 
-🗂 Feature Engineering
-Módulo:
+---
 
-bash
-Copiar código
-steps_pipeline/src/ft_engineering.py
-Contiene funciones para:
+## ✅ Buenas Prácticas
 
-Scaling
+- Configuración global → `config.json`
+- Versionado → Git
+- No subir archivos pesados → `.gitignore`
+- Uso de entornos virtuales
+- Modularización de funciones
+- Guardado de modelos con `joblib`
 
-Encoding
+---
 
-Selección de variables
+## 📄 Licencia
 
-🌐 Despliegue & Monitoreo
-steps_pipeline/src/model_deploy.ipynb
+Este proyecto se distribuye bajo licencia **MIT**.
 
-steps_pipeline/src/model_monitoring.ipynb
+---
 
-✅ Buenas Prácticas
-Config global → config.json
+## ✨ Autor
 
-Versionado → Git
-
-No subir archivos pesados → .gitignore
-
-Uso de ambientes virtuales
-
-Modularización de funciones
-
-Guardado de modelos con joblib
-
-📄 Licencia
-Este proyecto se distribuye bajo licencia MIT.
-
-✨ Autor
-Tu Nombre
-Machine Learning & Data Science
-
-LinkedIn: (tu-linkedin)
-GitHub: (tu-github)
+**Miguel Gallego Álvarez**  
+Machine Learning & Data Science  
+LinkedIn:  
+GitHub:  
