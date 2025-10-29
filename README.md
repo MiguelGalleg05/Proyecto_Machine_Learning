@@ -19,7 +19,7 @@ readme: |
 
   ---
 
-  ## 📁 Estructura del Proyecto
+  ## 📂 Estructura del Proyecto
 
 PROYECTO_MACHINE_LEARNING/
 │
@@ -40,10 +40,6 @@ PROYECTO_MACHINE_LEARNING/
 ├── .gitignore
 ├── README.md
 └── set_up.bat
-
-yaml
-Copiar código
-
 ---
 
 ## ✅ Funcionalidades Principales
