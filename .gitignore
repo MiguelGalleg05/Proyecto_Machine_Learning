@@ -1,33 +1,33 @@
-# ==== Python cache ====
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
+# # ==== Python cache ====
+# __pycache__/
+# *.pyc
+# *.pyo
+# *.pyd
 
-# ==== Jupyter ====
-.ipynb_checkpoints/
+# # ==== Jupyter ====
+# .ipynb_checkpoints/
 
-# ==== Virtual environments ====
-venv/
-env/
+# # ==== Virtual environments ====
+# venv/
+# env/
 
-# ==== OS / editor ====
-.DS_Store
-Thumbs.db
+# # ==== OS / editor ====
+# .DS_Store
+# Thumbs.db
 
-# ==== Logs ====
-*.log
+# # ==== Logs ====
+# *.log
 
-# ==== Modelos / artefactos grandes (opcional) ====
-*.joblib
-*.pkl
+# # ==== Modelos / artefactos grandes (opcional) ====
+# *.joblib
+# *.pkl
 
-# ==== Data pesada (opcional) ====
-*.csv
-*.xlsx
-*.parquet
-*.zip
+# # ==== Data pesada (opcional) ====
+# *.csv
+# *.xlsx
+# *.parquet
+# *.zip
 
-# ==== Configuración sensible (si existiera) ====
-*.env
-.env
+# # ==== Configuración sensible (si existiera) ====
+# *.env
+# .env
