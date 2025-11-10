@@ -241,6 +241,40 @@ http://localhost:8000
 
 ---
 
+## 🛡️ SonarCloud — Calidad del Código
+
+Este proyecto está integrado con **SonarCloud** para analizar y monitorear la calidad, seguridad y mantenibilidad del código fuente.
+
+🔍 **Análisis realizados:**
+- ✅ Calidad del código (mantenibilidad)
+  - Complejidad ciclomática
+  - Código duplicado
+  - Funciones extensas o complejas
+  - Code smells
+- ✅ Seguridad
+  - Vulnerabilidades
+  - Dependencias inseguras
+  - Exposición de datos sensibles
+- ⚠️ Cobertura de pruebas
+  - (Disponible si se integran pruebas unitarias)
+- ✅ Estilo e integridad
+  - Nombres consistentes
+  - Indentación adecuada
+  - Buenas prácticas generales
+
+🔗 **Dashboard del Proyecto en SonarCloud:**  
+https://sonarcloud.io/project/overview?id=MiguelGalleg05_Proyecto_Machine_Learning
+
+✅ *El proyecto fue analizado correctamente mediante SonarCloud.  
+No se detectan problemas críticos de seguridad ni mantenibilidad.*
+
+<img width="1919" height="968" alt="image" src="https://github.com/user-attachments/assets/1dd60c1e-00e8-4920-a93c-345dd4bc627d" />
+
+<img width="1919" height="910" alt="image" src="https://github.com/user-attachments/assets/9cf96d07-e619-4d24-afee-94818c768b4b" />
+
+
+---
+
 ## ✅ Buenas Prácticas
 
 - Uso de entornos virtuales
