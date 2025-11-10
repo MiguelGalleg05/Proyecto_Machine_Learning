@@ -65,7 +65,7 @@ Proyecto_Machine_Learning/
 ├── config.json
 ├── set_up.bat
 └── README.md
-
+```
 ## ✅ Funcionalidades Principales
 
 ✔ Gestión de configuración mediante `config.json`  
