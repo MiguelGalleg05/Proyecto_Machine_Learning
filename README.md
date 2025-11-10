@@ -275,6 +275,105 @@ No se detectan problemas críticos de seguridad ni mantenibilidad.*
 
 ---
 
+## 🧩 Decisiones de Feature Engineering
+
+Durante el proceso de ingeniería de características se tomaron decisiones clave para garantizar
+que los datos estuvieran en un formato óptimo para el modelado:
+
+### 🔹 Limpieza y consistencia
+- Se unificaron valores nulos y se imputaron según el tipo de variable.
+- Se identificaron valores inconsistentes o categorizaciones redundantes.
+
+### 🔹 Codificación (Encoding)
+- Variables categóricas nominales → One-Hot Encoding.
+- Variables binarias → Label Encoding.
+> Decisión: One-Hot permitió evitar relaciones ordinales inexistentes y mejorar el rendimiento de modelos lineales.
+
+### 🔹 Escalamiento
+- Se aplicó StandardScaler a variables numéricas continuas.
+> Justificación: facilita convergencia y estabiliza modelos lineales y basados en distancia.
+
+### 🔹 Selección de variables
+- Se eliminaron columnas irrelevantes (ej. identificadores).
+- Se evaluó correlación y gain-importance para descartar atributos sin valor predictivo.
+
+### 🔹 Generación de nuevas características
+- Se analizaron relaciones entre atributos para proponer combinaciones útiles.
+> Se documentaron candidatos, aunque no todos aportaron mejora significativa.
+
+> ✅ Estas decisiones mejoraron la estabilidad del entrenamiento, reduciendo ruido y manteniendo información relevante.
+
+
+---
+
+## 📊 Evaluación y Métricas del Modelo
+
+Durante la fase de entrenamiento se evaluaron varios algoritmos:
+
+- Logistic Regression  
+- Random Forest  
+- XGBoost  
+- LightGBM  
+
+Se compararon usando:
+- Accuracy
+- Precision
+- Recall
+- F1-Score
+- ROC-AUC
+
+> El modelo seleccionado fue **Random Forest**, debido a balance entre desempeño, estabilidad y bajo riesgo de sobreajuste.
+
+### 🔹 Reportes visuales
+
+Se generaron las siguientes visualizaciones para justificar la selección:
+
+- ✅ ROC Curves comparativas
+- ✅ Matriz de confusión
+- ✅ Feature importance
+- ✅ Learning curves
+
+> Estas gráficas mostraron que el modelo final mantenía buen balance entre sensibilidad y precisión,
+adecuado para el caso de churn donde ambas son relevantes.
+
+
+---
+
+## 📈 Extensión del Monitoreo
+
+La app de monitoreo fue ampliada para incluir:
+
+### 🔹 Comparativas de distribución
+- Se graficó la diferencia entre distribución histórica vs actual para cada variable.
+- Se resaltaron variables con desviaciones estadísticamente significativas.
+
+### 🔹 Métricas de Drift
+Se calcularon:
+- PSI (Population Stability Index)
+- KS Test
+- Jensen-Shannon Distance
+- Chi-Square para categóricas
+
+> La combinación de estas métricas permite detectar cambios tanto en forma como en proporciones de la data.
+
+### 🔹 Alertas visuales
+Implementación tipo “semáforo”:
+- 🟢 Estable
+- 🟡 Atención
+- 🔴 Crítico
+
+> Umbrales configurables permiten identificar cuándo reentrenar el modelo.
+
+### 🔹 Generación de reportes
+- Exportación periódica en `.csv` → `data/monitoring/`
+- Resumen con variables afectadas
+
+> Estas capacidades permiten monitoreo continuo y facilitan diagnósticos para mantenimiento del modelo.
+### En el archivo model_training.ipynb se habla de esto y los resultados.
+
+---
+
+
 ## ✅ Buenas Prácticas
 
 - Uso de entornos virtuales
