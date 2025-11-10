@@ -5,7 +5,9 @@ pandas
 # ==== Visualización ====
 matplotlib
 seaborn
-
+fastapi
+fastapi
+uvicorn
 # ==== Machine Learning clásico ====
 scikit-learn
 

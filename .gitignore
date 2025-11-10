@@ -1,15 +1,15 @@
 # # ==== Python cache ====
-# __pycache__/
-# *.pyc
-# *.pyo
-# *.pyd
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
 
 # # ==== Jupyter ====
 # .ipynb_checkpoints/
 
 # # ==== Virtual environments ====
-# venv/
-# env/
+venv/
+env/
 
 # # ==== OS / editor ====
 # .DS_Store
@@ -19,8 +19,8 @@
 # *.log
 
 # # ==== Modelos / artefactos grandes (opcional) ====
-# *.joblib
-# *.pkl
+*.joblib
+*.pkl
 
 # # ==== Data pesada (opcional) ====
 # *.csv
@@ -29,5 +29,5 @@
 # *.zip
 
 # # ==== Configuración sensible (si existiera) ====
-# *.env
-# .env
+*.env
+.env

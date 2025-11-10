@@ -114,5 +114,5 @@ if __name__ == "__main__":
 
 
     # Opcional: Guardar modelo ganador
-    # joblib.dump(best_model, "../models/best_model.pkl")
-    # print(" Modelo guardado en ../models/best_model.pkl")
+    joblib.dump(best_model, "../models/best_model.pkl")
+    print(" Modelo guardado en ../models/best_model.pkl")
