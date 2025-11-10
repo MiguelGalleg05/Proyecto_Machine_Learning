@@ -270,7 +270,7 @@ No se detectan problemas críticos de seguridad ni mantenibilidad.*
 
 <img width="1919" height="968" alt="image" src="https://github.com/user-attachments/assets/1dd60c1e-00e8-4920-a93c-345dd4bc627d" />
 
-<img width="1919" height="910" alt="image" src="https://github.com/user-attachments/assets/9cf96d07-e619-4d24-afee-94818c768b4b" />
+<img width="1919" height="968" alt="image" src="https://github.com/user-attachments/assets/f405c719-f4e6-432f-be38-fa68f13bad1c" />
 
 
 ---
