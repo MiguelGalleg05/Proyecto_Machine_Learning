@@ -1,66 +1,64 @@
-##vProyecto de Machine Learning
+# 🧠 Proyecto de Machine Learning  
+> Pipeline modular para un problema supervisado de clasificación (Churn)
 
-Pipeline modular para un problema supervisado de clasificación (Churn)
+---
 
-📌 Descripción
+## 📌 Descripción
 
-Este proyecto implementa un pipeline completo de Machine Learning para resolver un problema supervisado tipo clasificación, desde la carga de datos hasta el despliegue del modelo.
+Este proyecto implementa un pipeline completo de Machine Learning para resolver un problema supervisado tipo **clasificación**, desde la carga de datos hasta el despliegue del modelo.
 
 El flujo incluye:
 
-* Carga y validación de datos
+- Carga y validación de datos
+- Análisis Exploratorio (EDA)
+- Feature Engineering
+- Entrenamiento de múltiples modelos
+- Evaluación comparativa
+- Selección y guardado del mejor modelo
+- Monitoreo (Data Drift)
+- Exposición vía API
+- Contenerización con Docker
 
-* Análisis Exploratorio (EDA)
+---
 
-* Feature Engineering
+## 🎯 Objetivos
 
-* Entrenamiento de múltiples modelos
+✅ Desarrollar un pipeline ML modular  
+✅ Entrenar múltiples modelos y seleccionar el mejor  
+✅ Realizar monitoreo periódico  
+✅ Exponer el modelo mediante API  
+✅ Desplegar como contenedor Docker  
 
-* Evaluación comparativa
+---
 
-* Selección y guardado del mejor modelo
-
-* Monitoreo (Data Drift)
-
-* Exposición vía API
-
-* Contenerización con Docker
-
-🎯 Objetivos
-
-✅ Desarrollar pipeline ML modular
-✅ Entrenar múltiples modelos y seleccionar el mejor
-✅ Realizar monitoreo periódico del modelo
-✅ Exponer el modelo mediante API
-✅ Desplegar como contenedor Docker
-
-📂 Estructura del Proyecto
+## 📂 Estructura del Proyecto
+```bash
 Proyecto_Machine_Learning/
 │
-├── data/                             # Datos
-│   ├── Base_de_datos.csv             # Dataset original
+├── data/                              # Datos
+│   ├── Base_de_datos.csv              # Dataset original
 │   └── monitoring/
-│       └── data_drfit_report.csv     # Resultados medición drift
+│       └── data_drift_report.csv      # Resultados medición drift
 │
 ├── mlops_pipeline/
 │   └── src/
-│       ├── Cargar_datos.ipynb        # Carga inicial
-│       ├── compresion_eda.ipynb      # EDA completo
-│       ├── ft_engineering.py         # Feature Engineering
-│       ├── model_training.ipynb      # Entrenamiento
+│       ├── Cargar_datos.ipynb         # Carga inicial
+│       ├── compresion_eda.ipynb       # EDA completo
+│       ├── ft_engineering.py          # Feature Engineering
+│       ├── model_training.ipynb       # Entrenamiento
 │       ├── model_training_evaluation.py # Evaluación
-│       ├── model_evaluation.ipynb    # Métricas
-│       ├── model_monitoring.ipynb    # Monitoreo
-│       ├── model_monitoring.py       # Data Drift
-│       ├── model_deploy.ipynb        # Despliegue
-│       ├── model_deploy.py           # API
-│       └── utils/                    # Módulos auxiliares
+│       ├── model_evaluation.ipynb     # Métricas
+│       ├── model_monitoring.ipynb     # Monitoreo
+│       ├── model_monitoring.py        # Data drift
+│       ├── model_deploy.ipynb         # Despliegue
+│       ├── model_deploy.py            # API
+│       └── utils/                     # Módulos auxiliares
 │
 ├── models/
-│   └── best_model.pkl                # Mejor modelo
+│   └── best_model.pkl                 # Mejor modelo
 │
 ├── app/
-│   └── streamlit_app.py              # UI Monitoreo
+│   └── streamlit_app.py               # UI Monitoreo
 │
 ├── Dockerfile
 ├── requirements.txt
@@ -68,20 +66,26 @@ Proyecto_Machine_Learning/
 ├── set_up.bat
 └── README.md
 
-✅ Funcionalidades Principales
+## ✅ Funcionalidades Principales
 
-✔ Carga / Limpieza de datos
-✔ Análisis Exploratorio (EDA)
-✔ Ingeniería de características
-✔ Entrenamiento de múltiples modelos
-✔ Selección del mejor modelo
-✔ Métricas de desempeño
-✔ Monitoreo de data drift
-✔ API predictiva (FastAPI)
-✔ Contenerización (Docker)
-✔ Visualización Streamlit
+✔ Gestión de configuración mediante `config.json`  
+✔ Carga de datos centralizada  
+✔ Limpieza y validación automática  
+✔ EDA completo  
+✔ Feature Engineering programable  
+✔ Entrenamiento de múltiples modelos  
+✔ Evaluación con múltiples métricas  
+✔ Exportación del mejor modelo  
+✔ Monitoreo de Data Drift  
+✔ Exposición de API con FastAPI  
+✔ Contenerización Docker  
 
-⚙ Configuración (config.json)
+
+---
+
+## ⚙ Configuración (`config.json`)
+
+```json
 {
   "data": {
     "input_path": "data/Base_de_datos.csv",
@@ -101,183 +105,157 @@ Proyecto_Machine_Learning/
     "reports": "data/monitoring/"
   }
 }
+```
+---
 
-🧰 Instalación del entorno
-✅ Crear entorno
+## 🧰 Instalación del entorno
+
+✅ **Crear entorno virtual**
 python -m venv venv
 
 ✅ Activar entorno
-
-Windows:
-
+## Windows
 venv\Scripts\activate
 
-
-MacOS / Linux:
-
+## MacOS / Linux
 source venv/bin/activate
 
 ✅ Instalar dependencias
 pip install -r requirements.txt
 
-🚀 Ejecución del Pipeline
-1️⃣ Carga / Limpieza
 
-📄 Cargar_datos.ipynb
+---
 
-2️⃣ Análisis Exploratorio (EDA)
+## 🚀 Ejecución del Pipeline
 
-📄 compresion_eda.ipynb
+### 🔹 1 — Carga y Limpieza
+📄 `Cargar_datos.ipynb`
 
-Incluye:
+Realiza:
+- Lectura de dataset
+- Identificación de nulos
+- Normalización de valores
+- Corrección de tipos de datos
 
-Describe
 
-Distribuciones
-
-Outliers
-
-Correlación
-
-Relaciones con variable objetivo
-
-3️⃣ Feature Engineering
-
-📄 ft_engineering.py
+### 🔹 2 — Análisis Exploratorio (EDA)
+📄 `compresion_eda.ipynb`
 
 Incluye:
+- `describe()`
+- Distribución de variables
+- Detección de outliers
+- Matrices de correlación
+- Relación con la variable objetivo
 
-Encoding
 
-Escalado
+### 🔹 3 — Ingeniería de Características
+📄 `ft_engineering.py`
 
-Imputación
+Incluye:
+- Encoding
+- Escalado
+- Imputación
+- Separación Train/Test
 
-División train/test
 
-4️⃣ Entrenamiento
+### 🔹 4 — Entrenamiento del Modelo
+📄 `model_training.ipynb`
 
-📄 model_training.ipynb
+Modelos probados:
+- Logistic Regression
+- RandomForest
+- XGBoost
+- LightGBM
 
-Entrena múltiples modelos:
 
-Logistic Regression
+### 🔹 5 — Evaluación
+📄 `model_training_evaluation.py`
 
-RandomForest
+✔ Se compara el rendimiento  
+✔ Se selecciona el mejor modelo  
+✔ Se guarda en:
 
-XGBoost
 
-LightGBM
 
-5️⃣ Evaluación
 
-📄 model_training_evaluation.py
+### 🔹 6 — Monitoreo (Data Drift)
+📄 `model_monitoring.py`
 
-Se selecciona el mejor modelo
+Métricas calculadas:
+- KS Test
+- PSI
+- Jensen–Shannon
+- Chi²
 
-Se guarda como .pkl en /models/
+Salida:
 
-6️⃣ Monitoreo (Data Drift)
+- data/monitoring/data_drift_report.csv
 
-📄 model_monitoring.py
 
-Métricas:
+---
 
-KS Test
+## 📊 Métricas disponibles
 
-PSI
+- Accuracy
+- Precision
+- Recall
+- F1-Score
+- ROC-AUC
+- Population Stability Index (PSI)
+- Kolmogorov–Smirnov (KS)
+- Chi²
+- Jensen–Shannon
 
-Jensen-Shannon
+---
 
-Chi²
+## 🌐 Despliegue API
 
-Genera:
+Ejecutar API localmente:
 
-data/monitoring/data_drift_report.csv
-
-7️⃣ API para predicción
-
-📄 model_deploy.py
-
-Iniciar API:
-
+```bash
 uvicorn mlops_pipeline.src.model_deploy:app --reload
+```
+### ✅ Endpoint disponible
 
-8️⃣ Streamlit UI
+/predict
+Soporta:
+Predicciones individuales
+Predicciones por lote
+Formato JSON
 
-📄 streamlit_app.py
+---
+## 🐳 Docker
 
-streamlit run streamlit_app.py
-
-📊 Métricas disponibles
-
-Accuracy
-
-Precision
-
-Recall
-
-F1-Score
-
-ROC-AUC
-
-KS
-
-PSI
-
-Chi²
-
-JS Divergence
-
-🧩 Feature Engineering
-
-Incluye:
-
-Scaling
-
-Encoding
-
-Selección de variables
-
-Imputación
-
-🌐 Despliegue API
-Ejecutar local
-docker run -p 8000:8000 churn-model-api
-
-
-Endpoint:
-
-POST /predict
-
-
-Entrada JSON:
-
-{
-  "MonthlyCharges": 20,
-  "gender": "Female",
-  "tenure": 10
-}
-
-🐳 Docker
+✅ **Construir imagen**
+```
 docker build -t churn-model-api .
+```
+✅ Ejecutar contenedor
+
+
 docker run -p 8000:8000 churn-model-api
+🔗 Acceso por defecto
 
-✅ Buenas Prácticas
+http://localhost:8000
 
-✅ Uso de entornos virtuales
-✅ Modularización
-✅ Control de configuración
-✅ Versionado
-✅ Modelos exportables
+---
 
-📄 Licencia
+## ✅ Buenas Prácticas
 
-MIT License
+- Uso de entornos virtuales
+- Modularización del código
+- Versionado con Git
+- No subir modelos o datasets pesados
+- Configuración centralizada (`config.json`)
+- Separación clara de etapas del pipeline
 
-✨ Autor
 
-Miguel Gallego Álvarez
-Machine Learning & Data Science
+Este proyecto está bajo licencia **MIT**.
 
-🔗 GitHub: https://github.com/MiguelGalleg05 
+## ✨ Autor
+
+**Miguel Gallego Álvarez**  
+Machine Learning & Data Science  
+
+🔗 GitHub: https://github.com/MiguelGalleg05
