@@ -1,228 +1,283 @@
-  # 🧠 Proyecto de Machine Learning  
-  > Pipeline de modelado supervisado con enfoque en clasificación
+##vProyecto de Machine Learning
 
-  ---
+Pipeline modular para un problema supervisado de clasificación (Churn)
 
-  ## 📌 Descripción
+📌 Descripción
 
-  Este proyecto implementa un pipeline completo de Machine Learning para resolver un problema supervisado de clasificación.  
+Este proyecto implementa un pipeline completo de Machine Learning para resolver un problema supervisado tipo clasificación, desde la carga de datos hasta el despliegue del modelo.
 
-  Incluye:
-  - Carga y validación de datos
-  - Análisis Exploratorio (EDA)
-  - Feature Engineering
-  - Entrenamiento de modelos
-  - Evaluación
-  - Guardado de artefactos
-  - Base para despliegue y monitoreo
+El flujo incluye:
 
-  ---
+* Carga y validación de datos
 
- 
-  ## 📂 Estructura del Proyecto
-  
-   
-  
-  ```
-  PROYECTO_MACHINE_LEARNING/              # Raíz del proyecto
-  │
-  ├── steps_pipeline/                     # Flujo principal del pipeline
-  │   └── src/                            # Código y notebooks del pipeline
-  │       ├── carga_datos.ipynb           # Carga inicial de datos y limpieza básica
-  │       ├── compresion_eda.ipynb        # Análisis exploratorio (EDA)
-  │       ├── ft_engineering.py           # Feature engineering (scaling, encoding, selección)
-  │       ├── heuristic_model.py          # Modelo base sencillo (baseline)
-  │       ├── model_training.ipynb        # Entrenamiento de modelos
-  │       ├── model_deploy.ipynb          # Ejemplo de despliegue (API/serving)
-  │       ├── model_evaluation.ipynb      # Evaluación de métricas
-  │       └── model_monitoring.ipynb      # Monitoreo y detección de drift
-  │
-  ├── config.json                         # Configuración global del pipeline
-  ├── base_de_datos.csv                   # Dataset original de ejemplo
-  ├── requirements.txt                    # Dependencias del proyecto
-  ├── .gitignore                          # Archivos/carpetas a ignorar por Git
-  ├── README.md                           # Documentación principal del proyecto
-  └── set_up.bat                          # Script para preparar el entorno en Windows
-  ```
+* Análisis Exploratorio (EDA)
 
+* Feature Engineering
 
----
+* Entrenamiento de múltiples modelos
 
-## ✅ Funcionalidades Principales
+* Evaluación comparativa
 
-✔ Gestión de configuración mediante `config.json`  
-✔ Carga de datos centralizada  
-✔ Limpieza y validación automática  
-✔ EDA completo  
-✔ Feature Engineering programable  
-✔ Entrenamiento de modelos tradicionales  
-✔ Evaluación con múltiples métricas  
-✔ Exportación de modelos  
-✔ Scripts base para despliegue y monitoreo  
+* Selección y guardado del mejor modelo
 
----
+* Monitoreo (Data Drift)
 
-## 🧩 Configuración (`config.json`)
+* Exposición vía API
 
-Este archivo controla los parámetros principales del pipeline:  
-- Paths de entrada/salida  
-- Columna objetivo  
-- Proporción de datos train/test  
-- Tipo de modelo y parámetros  
-- Métricas de evaluación  
+* Contenerización con Docker
 
-```json
+🎯 Objetivos
+
+✅ Desarrollar pipeline ML modular
+✅ Entrenar múltiples modelos y seleccionar el mejor
+✅ Realizar monitoreo periódico del modelo
+✅ Exponer el modelo mediante API
+✅ Desplegar como contenedor Docker
+
+📂 Estructura del Proyecto
+Proyecto_Machine_Learning/
+│
+├── data/                             # Datos
+│   ├── Base_de_datos.csv             # Dataset original
+│   └── monitoring/
+│       └── data_drfit_report.csv     # Resultados medición drift
+│
+├── mlops_pipeline/
+│   └── src/
+│       ├── Cargar_datos.ipynb        # Carga inicial
+│       ├── compresion_eda.ipynb      # EDA completo
+│       ├── ft_engineering.py         # Feature Engineering
+│       ├── model_training.ipynb      # Entrenamiento
+│       ├── model_training_evaluation.py # Evaluación
+│       ├── model_evaluation.ipynb    # Métricas
+│       ├── model_monitoring.ipynb    # Monitoreo
+│       ├── model_monitoring.py       # Data Drift
+│       ├── model_deploy.ipynb        # Despliegue
+│       ├── model_deploy.py           # API
+│       └── utils/                    # Módulos auxiliares
+│
+├── models/
+│   └── best_model.pkl                # Mejor modelo
+│
+├── app/
+│   └── streamlit_app.py              # UI Monitoreo
+│
+├── Dockerfile
+├── requirements.txt
+├── config.json
+├── set_up.bat
+└── README.md
+
+✅ Funcionalidades Principales
+
+✔ Carga / Limpieza de datos
+✔ Análisis Exploratorio (EDA)
+✔ Ingeniería de características
+✔ Entrenamiento de múltiples modelos
+✔ Selección del mejor modelo
+✔ Métricas de desempeño
+✔ Monitoreo de data drift
+✔ API predictiva (FastAPI)
+✔ Contenerización (Docker)
+✔ Visualización Streamlit
+
+⚙ Configuración (config.json)
 {
   "data": {
-    "input_path": "base_de_datos.csv",
-    "clean_path": "data_limpia.csv",
-    "target_column": "target",
+    "input_path": "data/Base_de_datos.csv",
+    "target_column": "Churn",
     "test_size": 0.2,
     "random_state": 42
-  },
-  "preprocessing": {
-    "scale_numeric": true,
-    "impute_missing": true,
-    "encode_categorical": true
   },
   "model": {
     "type": "RandomForestClassifier",
     "params": {
       "n_estimators": 200,
-      "max_depth": null,
-      "min_samples_split": 2,
-      "min_samples_leaf": 1
+      "max_depth": null
     }
   },
-  "evaluation": {
-    "metrics": [
-      "accuracy",
-      "precision",
-      "recall",
-      "f1",
-      "roc_auc"
-    ]
-  },
   "output": {
-    "model_path": "modelo_rf.pkl",
-    "reports_path": "reports/"
+    "model_path": "models/best_model.pkl",
+    "reports": "data/monitoring/"
   }
 }
 
-```
-
-## ⚙ Instalación del entorno
-
-### ✅ Opción automática (Windows)
-Ejecutar:
-```bash
-set_up.bat
-```
-
-### ✅ Opción manual
-```bash
-# Crear entorno virtual
+🧰 Instalación del entorno
+✅ Crear entorno
 python -m venv venv
 
-# Activar entorno
-# Linux/Mac
-source venv/bin/activate
-# Windows
+✅ Activar entorno
+
+Windows:
+
 venv\Scripts\activate
 
-# Instalar dependencias
+
+MacOS / Linux:
+
+source venv/bin/activate
+
+✅ Instalar dependencias
 pip install -r requirements.txt
-```
 
----
+🚀 Ejecución del Pipeline
+1️⃣ Carga / Limpieza
 
-## 📦 Dependencias Principales
+📄 Cargar_datos.ipynb
 
-Las principales librerías se encuentran en `requirements.txt`:
+2️⃣ Análisis Exploratorio (EDA)
 
-- numpy
-- pandas
-- seaborn
-- matplotlib
-- scikit-learn
-- xgboost
-- lightgbm
-- imbalanced-learn
-- statsmodels
-- joblib
-- jupyter
+📄 compresion_eda.ipynb
 
----
+Incluye:
 
-## 🚀 Ejecución del Pipeline
+Describe
 
-1️⃣ **Carga / limpieza de datos**  
-📄 `steps_pipeline/src/carga_datos.ipynb`
+Distribuciones
 
-2️⃣ **EDA completo**  
-📄 `steps_pipeline/src/compresion_eda.ipynb`
+Outliers
 
-3️⃣ **Entrenamiento del modelo**  
-📄 `steps_pipeline/src/model_training.ipynb`
+Correlación
 
-4️⃣ **Evaluación del modelo**  
-📄 `steps_pipeline/src/model_evaluation.ipynb`
+Relaciones con variable objetivo
 
-5️⃣ **Exportar modelo entrenado**  
-📄 `modelo_rf.pkl`
+3️⃣ Feature Engineering
 
----
+📄 ft_engineering.py
 
-## 📊 Métricas disponibles
+Incluye:
 
-- Accuracy
-- Precision
-- Recall
-- F1-Score
-- ROC-AUC
+Encoding
 
----
+Escalado
 
-## 🧩 Feature Engineering
+Imputación
 
-📄 `steps_pipeline/src/ft_engineering.py`  
-Incluye funciones para:
-- Scaling
-- Encoding
-- Selección de variables
+División train/test
 
----
+4️⃣ Entrenamiento
 
-## 🌐 Despliegue y Monitoreo
+📄 model_training.ipynb
 
-- Despliegue del modelo  
-📄 `steps_pipeline/src/model_deploy.ipynb`
+Entrena múltiples modelos:
 
-- Monitoreo de performance / drift  
-📄 `steps_pipeline/src/model_monitoring.ipynb`
+Logistic Regression
 
----
+RandomForest
 
-## ✅ Buenas Prácticas
+XGBoost
 
-- Configuración global → `config.json`
-- Versionado → Git
-- No subir archivos pesados → `.gitignore`
-- Uso de entornos virtuales
-- Modularización de funciones
-- Guardado de modelos con `joblib`
+LightGBM
 
----
+5️⃣ Evaluación
 
-## 📄 Licencia
+📄 model_training_evaluation.py
 
-Este proyecto se distribuye bajo licencia **MIT**.
+Se selecciona el mejor modelo
 
----
+Se guarda como .pkl en /models/
 
-## ✨ Autor
+6️⃣ Monitoreo (Data Drift)
 
-**Miguel Gallego Álvarez**  
-Machine Learning & Data Science  
-LinkedIn:  
-GitHub:  
+📄 model_monitoring.py
+
+Métricas:
+
+KS Test
+
+PSI
+
+Jensen-Shannon
+
+Chi²
+
+Genera:
+
+data/monitoring/data_drift_report.csv
+
+7️⃣ API para predicción
+
+📄 model_deploy.py
+
+Iniciar API:
+
+uvicorn mlops_pipeline.src.model_deploy:app --reload
+
+8️⃣ Streamlit UI
+
+📄 streamlit_app.py
+
+streamlit run streamlit_app.py
+
+📊 Métricas disponibles
+
+Accuracy
+
+Precision
+
+Recall
+
+F1-Score
+
+ROC-AUC
+
+KS
+
+PSI
+
+Chi²
+
+JS Divergence
+
+🧩 Feature Engineering
+
+Incluye:
+
+Scaling
+
+Encoding
+
+Selección de variables
+
+Imputación
+
+🌐 Despliegue API
+Ejecutar local
+docker run -p 8000:8000 churn-model-api
+
+
+Endpoint:
+
+POST /predict
+
+
+Entrada JSON:
+
+{
+  "MonthlyCharges": 20,
+  "gender": "Female",
+  "tenure": 10
+}
+
+🐳 Docker
+docker build -t churn-model-api .
+docker run -p 8000:8000 churn-model-api
+
+✅ Buenas Prácticas
+
+✅ Uso de entornos virtuales
+✅ Modularización
+✅ Control de configuración
+✅ Versionado
+✅ Modelos exportables
+
+📄 Licencia
+
+MIT License
+
+✨ Autor
+
+Miguel Gallego Álvarez
+Machine Learning & Data Science
+
+🔗 GitHub: https://github.com/MiguelGalleg05 
